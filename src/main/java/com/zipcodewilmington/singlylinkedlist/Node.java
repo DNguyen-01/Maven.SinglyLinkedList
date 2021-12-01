@@ -8,7 +8,6 @@ public class Node {
     private Node next; //acts a pointer -> pointing to the next node
 
     public Node(){
-
     }
 
     public Node(Integer data, Node next){
