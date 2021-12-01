@@ -122,16 +122,46 @@ public class SinglyLinkedList<T> {
     }
 
 
-    public void size() {
+    public int size() {
+
+        int currentIndex = 0;
+        Node<T> currentNode = head;
+        while (currentNode != null) {
+                currentNode = currentNode.next;
+                currentIndex++;
+            }
+
+        return currentIndex;
 
     }
 
-    public void get() {
+    public T get(int index) {
+        //iterate through the index
+        //return the element within that index
+        int currentIndex = 0;
+        Node<T> currentNode = head;
+        while (currentNode != null && currentIndex != index) {
+            currentNode = currentNode.next;
+            currentIndex++;
+        }
+        if (currentIndex == index && currentNode != null) {
+            return currentNode.data;
+        }
 
+        return null;
     }
 
-    public void copy() {
+    public SinglyLinkedList<T> copy() {
 
+        SinglyLinkedList<T> newList = new SinglyLinkedList<T>();
+        Node<T> currentNode = head;
+
+        while (currentNode != null){
+            newList.add(currentNode.data);
+            currentNode = currentNode.next;
+        }
+
+        return newList;
     }
 
     public void sort() {
