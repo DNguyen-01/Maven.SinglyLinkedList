@@ -5,7 +5,7 @@ import javax.xml.bind.Element;
 /**
  * Created by leon on 1/10/18.
  */
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T extends Comparable>  {
 
     private Node<T> head;
     private Node<T> tail;
@@ -164,7 +164,31 @@ public class SinglyLinkedList<T> {
         return newList;
     }
 
+
     public void sort() {
+        //bubble sort
+        //.compareTo() - gives you a return of 1, 0 , -1 - relative comparison
+        //iterate through the list
+        //find the largest element and move it to the end
+        //continue to iterate through the list until the values are in order from smallest to largest
+        int initialSize = size();
+        int remaining = initialSize;
+        for (int i = 0; i < initialSize; i++) {
+            int smallestIndex = 0;
+            T smallestElement = get(0);
+            for (int j = 1; j < remaining; j++) {
+                T currentElement = get(j);
+                if(currentElement.compareTo(smallestElement) < 0){
+                    smallestElement = currentElement;
+                    smallestIndex = j;
+                }
+
+            }
+            remove(smallestIndex);
+            add(smallestElement);
+            remaining--;
+        }
+
 
     }
 
